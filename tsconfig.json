@@ -3,8 +3,7 @@
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "paths": {
-      "assets/*": ["assets/*"],
-      "styles/*": ["styles/*"]
+      "assets/*": ["assets/*"]
     },
     "typeRoots": ["node_modules/@types", "src/types"],
     "esModuleInterop": true,
