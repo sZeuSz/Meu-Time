@@ -41,6 +41,11 @@ const Heading = styled.h1`
   margin-bottom: 20px;
   line-height: 45px;
   color: #ffffec;
+
+  @media (max-width: 768px) {
+    font-size: 25px;
+    line-height: 35px;
+  }
 `;
 
 const Input = styled.input`

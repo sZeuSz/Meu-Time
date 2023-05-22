@@ -7,8 +7,10 @@ import {
   LogoWrapper,
   Navbar,
 } from "./header.styled";
-
+import { useMobileScreen } from "hooks";
+import MenuIcon from "../menu-icon/menu-icon.component";
 const Header: React.FC = () => {
+  const isMobileScreen: boolean = useMobileScreen();
   return (
     <ContainerHeader>
       <LimitContent>
@@ -16,11 +18,14 @@ const Header: React.FC = () => {
           <Logo src={logo} />
           <h1>Meu Time</h1>
         </LogoWrapper>
-        <Navbar>
-          <a href="http://localhost:3000">Início</a>
-          <a href="http://localhost:3000">Contact</a>
-          <a href="http://localhost:3000">About</a>
-        </Navbar>
+        {!isMobileScreen && (
+          <Navbar>
+            <a href="http://localhost:3000">Início</a>
+            <a href="http://localhost:3000">Contato</a>
+            <a href="http://localhost:3000">Sobre</a>
+          </Navbar>
+        )}
+        {isMobileScreen && <MenuIcon />}
       </LimitContent>
     </ContainerHeader>
   );

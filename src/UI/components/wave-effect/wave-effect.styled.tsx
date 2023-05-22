@@ -35,6 +35,7 @@ const Wave = styled.div<WaveProps>`
     linear infinite;
   background-image: url("${({ backgroundImage }) => backgroundImage}");
   background-size: 50% ${({ backgroundSize }) => backgroundSize}px;
+  z-index: 1;
 `;
 
 export { WaveKeyFrame, WaveWrapper, Wave };

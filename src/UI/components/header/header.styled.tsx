@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import { AiOutlineMenu } from "react-icons/ai";
+
+const MenuIcon = styled(AiOutlineMenu)`
+  color: #ffffec;
+  font-size: 15px;
+`;
 
 const ContainerHeader = styled.header`
   position: fixed;
@@ -48,4 +54,4 @@ const LogoWrapper = styled.div`
   font-weight: bold;
   color: #ffffff;
 `;
-export { ContainerHeader, LimitContent, Logo, LogoWrapper, Navbar };
+export { ContainerHeader, LimitContent, Logo, LogoWrapper, Navbar, MenuIcon };
