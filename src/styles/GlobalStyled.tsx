@@ -142,7 +142,6 @@ body {
     width: 0;
    }   
 }
-
 `;
 
 export default GlobalStyle;

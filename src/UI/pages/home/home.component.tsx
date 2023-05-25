@@ -1,10 +1,12 @@
 import React from "react";
-import { CustomSection, WaveEffect } from "UI/components";
+import { CustomBox, CustomSection, WaveEffect } from "UI/components";
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <>
-      <CustomSection></CustomSection>
+      <CustomSection>
+        <CustomBox />
+      </CustomSection>
       <WaveEffect></WaveEffect>
     </>
   );

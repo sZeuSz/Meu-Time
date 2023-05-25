@@ -9,8 +9,11 @@ import {
 } from "./header.styled";
 import { useMobileScreen } from "hooks";
 import MenuIcon from "../menu-icon/menu-icon.component";
+import { useNavigate } from "react-router-dom";
+
 const Header: React.FC = () => {
   const isMobileScreen: boolean = useMobileScreen();
+  const navigate = useNavigate();
   return (
     <ContainerHeader>
       <LimitContent>
@@ -20,9 +23,9 @@ const Header: React.FC = () => {
         </LogoWrapper>
         {!isMobileScreen && (
           <Navbar>
-            <a href="http://localhost:3000">Início</a>
-            <a href="http://localhost:3000">Contato</a>
-            <a href="http://localhost:3000">Sobre</a>
+            <span onClick={() => navigate("/")}>Início</span>
+            <span onClick={() => navigate("/")}>Contato</span>
+            <span onClick={() => navigate("/")}>Sobre</span>
           </Navbar>
         )}
         {isMobileScreen && <MenuIcon />}

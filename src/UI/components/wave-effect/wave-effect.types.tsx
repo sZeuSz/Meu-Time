@@ -1,8 +1,8 @@
 type WaveProps = {
   opacity: number;
-  animationDuration: number;
-  backgroundImage: string;
-  backgroundSize: number;
+  animationduration: number;
+  backgroundimage: string;
+  backgroundsize: number;
 };
 
 export { WaveProps };

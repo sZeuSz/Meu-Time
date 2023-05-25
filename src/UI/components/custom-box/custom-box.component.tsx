@@ -1,16 +1,85 @@
-import React from "react";
+import { useLocalStorage } from "hooks";
+import React, { useContext, useState } from "react";
+import { signIn } from "services";
 import styled from "styled-components";
+import { RotatingLines } from "react-loader-spinner";
+import { UserContext } from "contexts/userContext";
+
 const CustomBox: React.FC = () => {
+  const { userData, setUserData } = useContext(UserContext);
+
+  const [state, setState] = useState({
+    apiKey: "",
+    error: "",
+    isLoading: false,
+  });
+
+  const updateState = (property: string, value: string | boolean | number) => {
+    setState((prevState) => ({
+      ...prevState,
+      [property]: value,
+    }));
+  };
+
+  const handleLogin = async () => {
+    updateState("isLoading", true);
+
+    try {
+      if (state.apiKey) {
+        const response = await signIn(state.apiKey);
+
+        if (response?.errors?.token) {
+          console.log(response?.errors?.token);
+          updateState("error", "Não foi possível autenticar usando essa Key");
+          return;
+        }
+        updateState("isLoading", false);
+        console.log("logado com sucesso", response.response);
+        response.response["api_key"] = state.apiKey;
+        setUserData(response.response);
+        console.log("salvo com sucesso no contexto", response.response);
+      } else {
+        updateState("error", "Campo obrigatório!");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
-    <Box>
-      <LoginForm>
-        <Heading>
-          JÁ PENSOU EM TER TODAS AS ESTATÍSTICAS DO FUTEBOL NA PALMA DA MÃO?
-        </Heading>
-        <Input type="text" placeholder="Insira sua key da API-Football" />
-        <Button>Login</Button>
-      </LoginForm>
-    </Box>
+    <>
+      <Box>
+        <LoginForm>
+          <Heading>
+            JÁ PENSOU EM TER TODAS AS ESTATÍSTICAS DO FUTEBOL NA PALMA DA MÃO?
+          </Heading>
+          <Input
+            disabled={state.isLoading}
+            type="text"
+            placeholder="Insira sua key da API-Football"
+            value={state.apiKey}
+            onChange={(event) => {
+              updateState("error", "");
+              updateState("apiKey", event.target.value);
+            }}
+            required
+          />
+          {state.error && <ErrorMessage>{state.error}</ErrorMessage>}
+          <Button onClick={() => handleLogin()}>
+            {state.isLoading ? (
+              <RotatingLines
+                strokeColor="grey"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="20"
+                visible={true}
+              />
+            ) : (
+              "Login"
+            )}
+          </Button>
+        </LoginForm>
+      </Box>
+    </>
   );
 };
 
@@ -52,7 +121,7 @@ const Input = styled.input`
   width: 100%;
   max-width: 255px;
   padding: 10px;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   border-radius: 19px;
   border: 1px solid #55b1df;
   border: none;
@@ -72,6 +141,17 @@ const Button = styled.button`
 
   &:hover {
     background-color: #0d8bf2;
+  }
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
+  font-size: 12px;
+  margin: 10px 0px;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+    line-height: 13px;
   }
 `;
 

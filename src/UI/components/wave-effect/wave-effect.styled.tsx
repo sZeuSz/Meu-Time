@@ -31,10 +31,10 @@ const Wave = styled.div<WaveProps>`
   background-position: 200px bottom;
   transform-origin: center bottom;
   opacity: ${({ opacity }) => opacity};
-  animation: ${WaveKeyFrame} ${({ animationDuration }) => animationDuration}s
+  animation: ${WaveKeyFrame} ${({ animationduration }) => animationduration}s
     linear infinite;
-  background-image: url("${({ backgroundImage }) => backgroundImage}");
-  background-size: 50% ${({ backgroundSize }) => backgroundSize}px;
+  background-image: url("${({ backgroundimage }) => backgroundimage}");
+  background-size: 50% ${({ backgroundsize }) => backgroundsize}px;
   z-index: 1;
 `;
 

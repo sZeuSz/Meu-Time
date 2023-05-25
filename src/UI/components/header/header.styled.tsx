@@ -29,7 +29,7 @@ const Logo = styled.img`
 `;
 const Navbar = styled.nav`
   width: 300px;
-  a {
+  span {
     text-decoration: none;
 
     color: #fff;
@@ -43,6 +43,7 @@ const Navbar = styled.nav`
     &:hover {
       color: #fafafa;
       text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
     }
   }
 `;

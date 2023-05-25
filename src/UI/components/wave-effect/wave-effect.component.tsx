@@ -5,12 +5,13 @@ import { Wave, WaveWrapper } from "./wave-effect.styled";
 const WaveEffect: React.FC = () => {
   return (
     <WaveWrapper>
-      {waves.map((wave) => (
+      {waves.map((wave, index) => (
         <Wave
+          key={index}
           opacity={wave.opacity}
-          animationDuration={wave.animationDuration}
-          backgroundImage={wave.backgroundImage}
-          backgroundSize={wave.backgroundSize}
+          animationduration={wave.animationduration}
+          backgroundimage={wave.backgroundimage}
+          backgroundsize={wave.backgroundsize}
         />
       ))}
     </WaveWrapper>

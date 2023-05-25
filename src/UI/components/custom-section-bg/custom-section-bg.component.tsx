@@ -1,13 +1,11 @@
-import React from "react";
-import CustomBox from "../custom-box/custom-box.component";
+import React, { ReactNode } from "react";
 import { Section } from "./custom-section-bg.styled";
 
-const CustomSection: React.FC = () => {
-  return (
-    <Section>
-      <CustomBox></CustomBox>
-    </Section>
-  );
+type SectionProps = {
+  children: ReactNode;
+};
+const CustomSection: React.FC<SectionProps> = ({ children }) => {
+  return <Section>{children}</Section>;
 };
 
 export default CustomSection;
