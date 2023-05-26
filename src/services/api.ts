@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosInstance } from "axios";
 
 const api: AxiosInstance = axios.create({
   baseURL: "https://v3.football.api-sports.io",

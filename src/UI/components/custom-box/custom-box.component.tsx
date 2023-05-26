@@ -3,11 +3,13 @@ import React, { useContext, useState } from "react";
 import { signIn } from "services";
 import styled from "styled-components";
 import { RotatingLines } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "contexts/userContext";
 
 const CustomBox: React.FC = () => {
-  const { userData, setUserData } = useContext(UserContext);
-
+  const { setUserData } = useContext(UserContext);
+  const [, setUserDataLS] = useLocalStorage("userData");
+  const navigate = useNavigate();
   const [state, setState] = useState({
     apiKey: "",
     error: "",
@@ -31,18 +33,23 @@ const CustomBox: React.FC = () => {
         if (response?.errors?.token) {
           console.log(response?.errors?.token);
           updateState("error", "Não foi possível autenticar usando essa Key");
+          updateState("isLoading", false);
           return;
         }
-        updateState("isLoading", false);
+
         console.log("logado com sucesso", response.response);
         response.response["api_key"] = state.apiKey;
         setUserData(response.response);
+        setUserDataLS(response.response);
         console.log("salvo com sucesso no contexto", response.response);
+        navigate("/statistics");
       } else {
         updateState("error", "Campo obrigatório!");
       }
+      updateState("isLoading", false);
     } catch (error) {
       console.error(error);
+      updateState("isLoading", false);
     }
   };
   return (

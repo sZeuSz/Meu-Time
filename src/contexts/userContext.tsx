@@ -44,6 +44,7 @@ const UserContextProvider: React.FC<UserContextProviderProps> = ({
 
   useEffect(() => {
     if (userDataLS) {
+      console.log("tem", userDataLS);
       setUserData(userDataLS);
     }
   }, [userDataLS]);

@@ -2,8 +2,9 @@ import React from "react";
 import { GlobalStyled } from "styles";
 import { Header } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./pages";
+import { Home, Statistics } from "./pages";
 import { UserContextProvider } from "contexts/userContext";
+
 const App: React.FC = () => {
   return (
     <UserContextProvider>
@@ -11,6 +12,7 @@ const App: React.FC = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/statistics" element={<Statistics />} />
         </Routes>
         <GlobalStyled />
       </BrowserRouter>
