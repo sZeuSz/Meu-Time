@@ -6,3 +6,4 @@ export { default as MenuIcon } from "./menu-icon/menu-icon.component";
 export { default as RouteStepContent } from "./route-step-fragment/route-step-fragment.component";
 export { default as LoadSpinner } from "./load-spinner/load-spinner.component";
 export { CircleWrapper } from "./shared-styled/circle-wrapper";
+export { default as PlayerCard } from "./team-statistics/player-card.component";

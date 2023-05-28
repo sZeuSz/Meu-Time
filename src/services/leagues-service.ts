@@ -129091,6 +129091,7 @@ const getLeagues = async (
     const resultMap = resultFilter.map((item) => {
       return { ...item.league, name: item.league.name, flag: item.league.logo };
     });
+      console.log(resultMap)
 
     return resultMap;
   } catch (error) {

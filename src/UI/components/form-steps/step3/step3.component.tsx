@@ -4,7 +4,7 @@ import { getLeagues } from "services";
 import Step from "../generic-step/generic-step.component";
 import { League } from "./step3.types";
 
-const Step2: React.FC = () => {
+const Step3: React.FC = () => {
   const { formData, saveStep } = useContext(FormContext);
   return (
     <Step<League>
@@ -18,4 +18,4 @@ const Step2: React.FC = () => {
   );
 };
 
-export default Step2;
+export default Step3;

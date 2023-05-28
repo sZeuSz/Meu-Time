@@ -55,6 +55,11 @@ function Step<T extends { [key: string]: string }>(
     getData(userData?.api_key);
   }, [getData, userData?.api_key]);
 
+  useEffect(() => {
+    getData(userData?.api_key);
+    window.scrollTo(0, 0); // Rolando para o topo da página
+  }, [getData, userData?.api_key]);
+
   const handleSelect = (item: T) => {
     props.saveStep(formData.step, item);
   };

@@ -1,20 +1,20 @@
 import { FormContext } from "contexts/formContext";
 import React, { useContext } from "react";
-import { getSeasons } from "services";
+import { getTeams } from "services";
 import Step from "../generic-step/generic-step.component";
-import { Season } from "./step2.types";
+import { Teams } from "./step4.types";
 
-const Step2: React.FC = () => {
+const Step4: React.FC = () => {
   const { saveStep } = useContext(FormContext);
   return (
-    <Step<Season>
+    <Step<Teams>
       saveStep={saveStep}
-      apiFunction={getSeasons}
-      flagKey={null}
+      apiFunction={getTeams}
+      flagKey="flag"
       nameKey="name"
       apiParams={[]}
     />
   );
 };
 
-export default Step2;
+export default Step4;

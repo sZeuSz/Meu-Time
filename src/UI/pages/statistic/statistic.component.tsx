@@ -1,5 +1,10 @@
 import React, { useContext, useState } from "react";
-import { CustomSection, RouteStepContent, WaveEffect } from "UI/components";
+import {
+  CustomSection,
+  PlayerCard,
+  RouteStepContent,
+  WaveEffect,
+} from "UI/components";
 import styled from "styled-components";
 import { UserContext } from "contexts/userContext";
 import { steps } from "data";
@@ -35,7 +40,8 @@ const Statistics: React.FC = () => {
                 })}
               </ProgressStep>
               <Modal>
-                <RouteStepContent step={step} />
+                {step === 0 ? <PlayerCard /> : <RouteStepContent step={step} />}
+                <PlayerCard />
               </Modal>
             </ModalWrapper>
           )}
