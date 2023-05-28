@@ -7,7 +7,7 @@ const getCountries = async (key: string | unknown): Promise<any> => {
   } catch (error) {
     throw new Error("Erro ao obter o usuário");
   }*/
-  return {
+  const response = {
     get: "countries",
     parameters: [],
     errors: [],
@@ -854,6 +854,7 @@ const getCountries = async (key: string | unknown): Promise<any> => {
       },
     ],
   };
+  return response.response;
 };
 
 export default getCountries;

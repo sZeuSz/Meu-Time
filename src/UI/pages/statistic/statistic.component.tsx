@@ -1,81 +1,66 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from "react";
-import { CustomBox, CustomSection, WaveEffect } from "UI/components";
+import React, { useContext, useState } from "react";
+import { CustomSection, RouteStepContent, WaveEffect } from "UI/components";
 import styled from "styled-components";
-import { NavigateFunction, useNavigate } from "react-router-dom";
-import { getCountries } from "services";
 import { UserContext } from "contexts/userContext";
-type Country = {
-  name: string;
-  code: string;
-  flag: string;
-};
+import { steps } from "data";
+import { FormContext, FormProvider } from "contexts/formContext";
+
 const Statistics: React.FC = () => {
-  const [step, setStep] = useState<boolean>(false);
+  const { formData, setFormData, nextStep } = useContext(FormContext);
   const { userData } = useContext(UserContext);
-  const handleSelectStep = () => {
-    setStep(true);
-  };
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [countries, setCountries] = useState<Country[]>([]);
-  const navigate: NavigateFunction = useNavigate();
-
-  const getAllCountries = useCallback(async (key: string) => {
-    try {
-      const response = await getCountries(key);
-      setCountries(response.response);
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
-
-  useEffect(() => {
-    getAllCountries(userData?.api_key);
-  }, [getAllCountries, userData?.api_key]);
+  const { step } = formData;
+  console.log("PAASSSOOO", step);
   return (
     <>
       <CustomSection>
         <SelectWrapper>
-          {step && isLoading
-            ? "Loading"
-            : step && (
-                <ModalWrapper>
-                  <ProgressStep>
-                    <Step active={true}>{1}</Step>
-                    <Step active={true}>{3}</Step>
-                    <Step active={true}>{4}</Step>
-                    <Step active={true}>{5}</Step>
-                    <Step active={true}>{6}</Step>
-                  </ProgressStep>
-                  <Modal>
-                    {countries.map((country, index) => {
-                      return (
-                        <CountryWrapper key={index}>
-                          <img src={country.flag} alt={country.name} />
-                          <span>{country.name}</span>
-                        </CountryWrapper>
-                      );
-                    })}
-                  </Modal>
-                </ModalWrapper>
-              )}
-          {!step && (
-            <ButtonSelect onClick={handleSelectStep}>
-              Selecione um país
-            </ButtonSelect>
+          {step && (
+            <ModalWrapper>
+              <ProgressStep>
+                {steps.map((step, index) => {
+                  return (
+                    <StepWrapper
+                      key={index}
+                      onClick={() => nextStep(step.step)}
+                    >
+                      <Step
+                        active={step.active}
+                        last={index === steps.length - 1}
+                      >
+                        {step.step}
+                      </Step>
+                      <h3>{step.name}</h3>
+                    </StepWrapper>
+                  );
+                })}
+              </ProgressStep>
+              <Modal>
+                <RouteStepContent step={step} />
+              </Modal>
+            </ModalWrapper>
           )}
         </SelectWrapper>
       </CustomSection>
+
       <WaveEffect></WaveEffect>
+      <button onClick={() => console.log(formData)}>MIM CLIQUE</button>
     </>
   );
 };
-const ProgressWrapper = styled.div``;
+const StepWrapper = styled.div`
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  h3 {
+    width: 10px;
+    text-align: start;
+    color: #ffffff;
+  }
+  cursor: pointer;
+`;
 const ProgressStep = styled.div`
   display: flex;
   flex-direction: column;
@@ -89,7 +74,7 @@ const ProgressStep = styled.div`
   z-index: 1;
   border-radius: 12px;
 `;
-const Step = styled.div<{ active: boolean }>`
+const Step = styled.div<{ active: boolean; last: boolean }>`
   position: relative;
   width: 40px;
   height: 40px;
@@ -99,48 +84,20 @@ const Step = styled.div<{ active: boolean }>`
   justify-content: center;
   background-color: ${({ active }) => (active ? "#ffffff" : "#c4c4c4")};
 
-  &:not(:last-child)::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 40px;
-    width: 2px;
-    height: 40px;
-    background-color: #c4c4c4;
-    transform: translateX(-50%);
-    z-index: 1;
-  }
-`;
-const CountryWrapper = styled.div`
-  width: 100px;
-  height: 100px;
-  display: flex;
-
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: solid 2px #ffffff;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 5;
-  img {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 10px;
-  }
-
-  span {
-    font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #ffffff;
-    text-align: center;
-  }
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  z-index: 1;
+  ${({ last }) =>
+    last
+      ? ""
+      : `&:not(:last-child)::before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 40px;
+          width: 2px;
+          height: 40px;
+          background-color: #c4c4c4;
+          transform: translateX(-50%);
+          z-index: 1;
+        }`}
 `;
 
 const SelectWrapper = styled.div`
