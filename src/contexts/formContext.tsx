@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createContext } from "react";
 import { steps } from "data";
 import { Country } from "UI/components/form-steps/step1/step1.types";
+import { useNavigate } from "react-router-dom";
 
 type FormData = {
   step1Data: any;
@@ -41,6 +42,7 @@ const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
       ...formData,
       step: steps.findIndex((stepS) => stepS.step === step) + 1,
     });
+
     steps.forEach((stepS) => {
       if (stepS.step === step) {
         stepS.active = true;
@@ -56,8 +58,16 @@ const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
     setFormData({
       ...formData,
       [`step${step}Data`]: data,
-      step: steps.findIndex((stepS) => stepS.step === step + 1) + 1,
+      step: steps.findIndex((stepS) => stepS.step === step + 1) + 1 || 1,
     });
+    if (step >= 4) {
+      setFormData({
+        ...formData,
+        [`step${step}Data`]: data,
+        step: 4,
+      });
+      return;
+    }
     steps.forEach((stepS) => {
       if (stepS.step === step + 1) {
         stepS.active = true;

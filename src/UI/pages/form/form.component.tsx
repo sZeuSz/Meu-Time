@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import {
   CustomSection,
-  PlayerCard,
+  Modal,
+  ModalWrapper,
   RouteStepContent,
   WaveEffect,
 } from "UI/components";
@@ -10,7 +11,7 @@ import { UserContext } from "contexts/userContext";
 import { steps } from "data";
 import { FormContext, FormProvider } from "contexts/formContext";
 
-const Statistics: React.FC = () => {
+const Form: React.FC = () => {
   const { formData, setFormData, nextStep } = useContext(FormContext);
   const { userData } = useContext(UserContext);
   const { step } = formData;
@@ -40,8 +41,7 @@ const Statistics: React.FC = () => {
                 })}
               </ProgressStep>
               <Modal>
-                {step === 0 ? <PlayerCard /> : <RouteStepContent step={step} />}
-                <PlayerCard />
+                <RouteStepContent step={step} />
               </Modal>
             </ModalWrapper>
           )}
@@ -113,36 +113,4 @@ const SelectWrapper = styled.div`
   justify-content: center;
 `;
 
-const ModalWrapper = styled.div`
-  width: calc(100% - 70px);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.08);
-  border: solid 2px #ffffff;
-`;
-const Modal = styled.div`
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  flex-wrap: wrap;
-  gap: 15px;
-  width: 100%;
-  max-width: 800px;
-  height: 400px;
-  z-index: 65;
-  overflow-y: scroll;
-  border-radius: 12px;
-`;
-const ButtonSelect = styled.button`
-  width: 150px;
-  height: 30px;
-  background-color: gray;
-  border-radius: 12px;
-  z-index: 2;
-`;
-
-export default Statistics;
+export default Form;

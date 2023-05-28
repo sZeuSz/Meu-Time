@@ -2,7 +2,7 @@ import React from "react";
 import { GlobalStyled } from "styles";
 import { Header } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, Statistics } from "./pages";
+import { Form, Home, TeamStatisticsSelect } from "./pages";
 import { UserContextProvider } from "contexts/userContext";
 import { FormProvider } from "contexts/formContext";
 
@@ -14,7 +14,8 @@ const App: React.FC = () => {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/statistics" element={<Statistics />} />
+            <Route path="/form" element={<Form />} />
+            <Route path="team-statistics" element={<TeamStatisticsSelect />} />
           </Routes>
           <GlobalStyled />
         </BrowserRouter>

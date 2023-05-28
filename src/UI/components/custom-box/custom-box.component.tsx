@@ -42,7 +42,7 @@ const CustomBox: React.FC = () => {
         setUserData(response.response);
         setUserDataLS(response.response);
         console.log("salvo com sucesso no contexto", response.response);
-        navigate("/statistics");
+        navigate("/form");
       } else {
         updateState("error", "Campo obrigatório!");
       }

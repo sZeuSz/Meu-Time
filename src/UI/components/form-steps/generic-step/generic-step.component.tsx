@@ -2,6 +2,7 @@ import { defaultImage } from "assets";
 import { FormContext } from "contexts/formContext";
 import { UserContext } from "contexts/userContext";
 import React, { useCallback, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   LoadingSpinner,
   LoadingWrapper,
@@ -27,7 +28,7 @@ function Step<T extends { [key: string]: string }>(
   const { userData } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { formData } = useContext(FormContext);
-
+  const navigate = useNavigate();
   const getData = useCallback(
     async (key: string) => {
       try {
@@ -55,13 +56,12 @@ function Step<T extends { [key: string]: string }>(
     getData(userData?.api_key);
   }, [getData, userData?.api_key]);
 
-  useEffect(() => {
-    getData(userData?.api_key);
-    window.scrollTo(0, 0); // Rolando para o topo da página
-  }, [getData, userData?.api_key]);
-
   const handleSelect = (item: T) => {
     props.saveStep(formData.step, item);
+
+    if (formData.step === 4) {
+      navigate("/team-statistics");
+    }
   };
 
   return (
