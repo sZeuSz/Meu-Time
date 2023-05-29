@@ -19,40 +19,45 @@ const Form: React.FC = () => {
   return (
     <>
       <CustomSection>
-        <SelectWrapper>
-          {step && (
-            <ModalWrapper>
-              <ProgressStep>
-                {steps.map((step, index) => {
-                  return (
-                    <StepWrapper
-                      key={index}
-                      onClick={() => nextStep(step.step)}
-                    >
-                      <Step
-                        active={step.active}
-                        last={index === steps.length - 1}
+        <Container>
+          <SelectWrapper>
+            {step && (
+              <ModalWrapper>
+                <ProgressStep>
+                  {steps.map((step, index) => {
+                    return (
+                      <StepWrapper
+                        key={index}
+                        onClick={() => nextStep(step.step)}
                       >
-                        {step.step}
-                      </Step>
-                      <h3>{step.name}</h3>
-                    </StepWrapper>
-                  );
-                })}
-              </ProgressStep>
-              <Modal>
-                <RouteStepContent step={step} />
-              </Modal>
-            </ModalWrapper>
-          )}
-        </SelectWrapper>
+                        <Step
+                          active={step.active}
+                          last={index === steps.length - 1}
+                        >
+                          {step.step}
+                        </Step>
+                        <h3>{step.name}</h3>
+                      </StepWrapper>
+                    );
+                  })}
+                </ProgressStep>
+                <Modal>
+                  <RouteStepContent step={step} />
+                </Modal>
+              </ModalWrapper>
+            )}
+          </SelectWrapper>
+        </Container>
       </CustomSection>
-
       <WaveEffect></WaveEffect>
-      <button onClick={() => console.log(formData)}>MIM CLIQUE</button>
     </>
   );
 };
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 const StepWrapper = styled.div`
   position: relative;
 
@@ -107,10 +112,24 @@ const Step = styled.div<{ active: boolean; last: boolean }>`
 `;
 
 const SelectWrapper = styled.div`
+  width: 100vw;
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: center;
+  height: calc(100vh - 201px);
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.08);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    border-radius: 0px;
+    border: none;
+  }
+  @media (max-width: 280px) {
+    height: 68%;
+  }
 `;
 
 export default Form;

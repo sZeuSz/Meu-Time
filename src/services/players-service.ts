@@ -1,9 +1,14 @@
 import api from "./api";
 import { makeConfig } from "./api.config";
 
-const getPlayers = async (key: string | unknown): Promise<any> => {
+const getPlayers = async (
+  key: string | unknown,
+  leagueId: string,
+  seasonId: string,
+  teamId: string
+): Promise<any> => {
   /*try {
-    const response = await api.get(`/seasons`, makeConfig(key));
+    const response = await api.get(`/players?league=${leagueId}&season=${seasonId}&team=${teamId}`, makeConfig(key));
     return response.data;
   } catch (error) {
     throw new Error("Erro ao obter as temporadas");
@@ -1924,9 +1929,7 @@ const getPlayers = async (key: string | unknown): Promise<any> => {
       },
     ],
   };
-  return result.response.map((item) => {
-    return { name: item, flag: "none" };
-  });
+  return result.response;
 };
 
 export default getPlayers;

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const ModalWrapper = styled.div`
-  width: calc(100% - 70px);
+  width: 1200px;
+  height: calc(100vh - 201px);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -9,7 +10,16 @@ const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.08);
-  border: solid 2px #ffffff;
+  // border: solid 2px #ffffff;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    border-radius: 0px;
+    border: none;
+  }
+  @media (max-width: 280px) {
+    height: 68%;
+  }
 `;
 
 const Modal = styled.div`
