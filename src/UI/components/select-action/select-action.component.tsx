@@ -9,6 +9,7 @@ import { FormContext } from "contexts/formContext";
 import Players from "../team-statistics/players/players.component";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import Lineups from "../team-statistics/lineups/lineups.component";
+import ResultTable from "../team-statistics/result-table/result-table.component";
 const SelectAction: React.FC = () => {
   const { userData } = useContext(UserContext);
   const { formData } = useContext(FormContext);
@@ -20,6 +21,7 @@ const SelectAction: React.FC = () => {
   const handleSelectContent = (ButtonId: Number) => {
     setSelectContent(<Players />);
     setSelectContent(<Lineups />);
+    setSelectContent(<ResultTable />);
     setText(
       statisticsToSelect.filter((item) => item.id === ButtonId)?.[0].name
     );

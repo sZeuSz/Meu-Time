@@ -11,3 +11,5 @@ export { default as SelectAction } from "./select-action/select-action.component
 export { ModalWrapper } from "./shared-styled/modal";
 export { Modal } from "./shared-styled/modal";
 export { default as Lineups } from "./team-statistics/lineups/lineups.component";
+export { default as ResultTable } from "./team-statistics/result-table/result-table.component";
+export { default as FixtureTable } from "./fixture-table/fixture-table.component";

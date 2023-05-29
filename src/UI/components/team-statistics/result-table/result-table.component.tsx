@@ -1,0 +1,76 @@
+import { FormContext } from "contexts/formContext";
+import { UserContext } from "contexts/userContext";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { getTeamsStatistics } from "services";
+import styled from "styled-components";
+import { LoadingSpinner } from "UI/components/load-spinner/load-spinner.styled";
+import SoccerLineUp from "react-soccer-lineup";
+import { generateTeam } from "helpers";
+import { useMobileScreen } from "hooks";
+import { Card, InfoWrapper } from "./result-table.styled";
+import { FixtureStats } from "./result-table.types";
+import FixtureTable from "UI/components/fixture-table/fixture-table.component";
+
+const ResultTable: React.FC = React.memo(() => {
+  const { userData } = useContext(UserContext);
+  const { formData } = useContext(FormContext);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState<FixtureStats[]>([]);
+  const isMobileScreen: boolean = useMobileScreen(372);
+
+  const getData = useCallback(
+    async (key: string, leagueId: string, seasonId: string, teamId: string) => {
+      try {
+        const response = await getTeamsStatistics(
+          key,
+          leagueId,
+          seasonId,
+          teamId,
+          "fixtures"
+        );
+        setData(response);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    if (
+      userData?.api_key &&
+      formData.step3Data.id &&
+      formData.step2Data.name &&
+      formData.step4Data.id
+    ) {
+      getData(
+        userData.api_key,
+        formData.step3Data.id,
+        formData.step2Data.name,
+        formData.step4Data.id
+      );
+    }
+  }, [
+    userData?.api_key,
+    formData.step3Data.id,
+    formData.step2Data.name,
+    formData.step4Data.id,
+    getData,
+  ]);
+  console.log(data);
+  return (
+    <>
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <Card>
+          <FixtureTable fixtureStats={data} />
+        </Card>
+      )}
+    </>
+  );
+});
+
+export default ResultTable;
