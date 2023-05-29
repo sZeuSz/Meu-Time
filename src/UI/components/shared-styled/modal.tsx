@@ -28,7 +28,7 @@ const Modal = styled.div`
   padding: 10px;
   flex-wrap: wrap;
   gap: 15px;
-  width: 100%;
+  width: auto;
   max-width: 800px;
   max-height: 400px;
   z-index: 65;

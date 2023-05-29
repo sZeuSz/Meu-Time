@@ -17,27 +17,27 @@ const FixtureTable = ({ fixtureStats }) => {
       <tbody>
         <TableRow>
           <TableCell>Played</TableCell>
-          <TableCell>{played.home}</TableCell>
-          <TableCell>{played.away}</TableCell>
-          <TableCell>{played.total}</TableCell>
+          <TableCell>{played?.home}</TableCell>
+          <TableCell>{played?.away}</TableCell>
+          <TableCell>{played?.total}</TableCell>
         </TableRow>
         <TableRow>
           <TableCell>Wins</TableCell>
-          <TableCell>{wins.home}</TableCell>
-          <TableCell>{wins.away}</TableCell>
-          <TableCell>{wins.total}</TableCell>
+          <TableCell>{wins?.home}</TableCell>
+          <TableCell>{wins?.away}</TableCell>
+          <TableCell>{wins?.total}</TableCell>
         </TableRow>
         <TableRow>
           <TableCell>Draws</TableCell>
-          <TableCell>{draws.home}</TableCell>
-          <TableCell>{draws.away}</TableCell>
-          <TableCell>{draws.total}</TableCell>
+          <TableCell>{draws?.home}</TableCell>
+          <TableCell>{draws?.away}</TableCell>
+          <TableCell>{draws?.total}</TableCell>
         </TableRow>
         <TableRow>
           <TableCell>Loses</TableCell>
-          <TableCell>{loses.home}</TableCell>
-          <TableCell>{loses.away}</TableCell>
-          <TableCell>{loses.total}</TableCell>
+          <TableCell>{loses?.home}</TableCell>
+          <TableCell>{loses?.away}</TableCell>
+          <TableCell>{loses?.total}</TableCell>
         </TableRow>
       </tbody>
     </Table>

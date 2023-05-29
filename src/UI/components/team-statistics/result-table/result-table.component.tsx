@@ -2,11 +2,7 @@ import { FormContext } from "contexts/formContext";
 import { UserContext } from "contexts/userContext";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { getTeamsStatistics } from "services";
-import styled from "styled-components";
 import { LoadingSpinner } from "UI/components/load-spinner/load-spinner.styled";
-import SoccerLineUp from "react-soccer-lineup";
-import { generateTeam } from "helpers";
-import { useMobileScreen } from "hooks";
 import { Card, InfoWrapper } from "./result-table.styled";
 import { FixtureStats } from "./result-table.types";
 import FixtureTable from "UI/components/fixture-table/fixture-table.component";
@@ -16,7 +12,6 @@ const ResultTable: React.FC = React.memo(() => {
   const { formData } = useContext(FormContext);
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<FixtureStats[]>([]);
-  const isMobileScreen: boolean = useMobileScreen(372);
 
   const getData = useCallback(
     async (key: string, leagueId: string, seasonId: string, teamId: string) => {
@@ -66,7 +61,9 @@ const ResultTable: React.FC = React.memo(() => {
         <LoadingSpinner />
       ) : (
         <Card>
-          <FixtureTable fixtureStats={data} />
+          <InfoWrapper>
+            <FixtureTable fixtureStats={data} />
+          </InfoWrapper>
         </Card>
       )}
     </>
