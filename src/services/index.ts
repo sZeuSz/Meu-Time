@@ -4,3 +4,4 @@ export { default as getLeagues } from "./leagues-service";
 export { default as getSeasons } from "./seasons-service";
 export { default as getTeams } from "./teams-service";
 export { default as getPlayers } from "./players-service";
+export { default as getTeamsStatistics } from "./statistics-service";

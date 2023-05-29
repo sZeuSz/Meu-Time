@@ -47,7 +47,7 @@ const Players: React.FC = React.memo(() => {
     formData.step4Data.id,
     getData,
   ]);
-  console.log(players);
+
   return (
     <>
       {loading ? (

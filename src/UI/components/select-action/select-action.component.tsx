@@ -6,8 +6,9 @@ import { UserContext } from "contexts/userContext";
 import { statisticsToSelect } from "data";
 import { ButtonSelect } from "../shared-styled/button-select";
 import { FormContext } from "contexts/formContext";
-import Players from "../team-statistics/players/players";
+import Players from "../team-statistics/players/players.component";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+import Lineups from "../team-statistics/lineups/lineups.component";
 const SelectAction: React.FC = () => {
   const { userData } = useContext(UserContext);
   const { formData } = useContext(FormContext);
@@ -18,6 +19,7 @@ const SelectAction: React.FC = () => {
                   escolhido (${formData.step4Data.name})`);
   const handleSelectContent = (ButtonId: Number) => {
     setSelectContent(<Players />);
+    setSelectContent(<Lineups />);
     setText(
       statisticsToSelect.filter((item) => item.id === ButtonId)?.[0].name
     );
@@ -97,7 +99,7 @@ const SelectWrapper = styled.div<{ selectContent: any }>`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.08);
 
   @media (max-width: 768px) {
-    width: 100%;
+    // width: 100%;
     border-radius: 0px;
     border: none;
   }

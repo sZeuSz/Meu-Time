@@ -30,7 +30,7 @@ const Modal = styled.div`
   gap: 15px;
   width: 100%;
   max-width: 800px;
-  height: 400px;
+  max-height: 400px;
   z-index: 65;
   overflow-y: scroll;
   border-radius: 12px;
