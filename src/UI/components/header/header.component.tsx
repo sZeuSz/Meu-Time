@@ -18,7 +18,7 @@ const Header: React.FC = () => {
     <ContainerHeader>
       <LimitContent>
         <LogoWrapper onClick={() => navigate("/")}>
-          <Logo src={logo} />
+          <Logo onClick={() => navigate("/")} src={logo} alt="Meu Time" />
           <h1>Meu Time</h1>
         </LogoWrapper>
         {!isMobileScreen && (

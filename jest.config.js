@@ -4,7 +4,7 @@ module.exports = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
   },
-  setupFilesAfterEnv: ["@testing-library/jest-dom"],
+  setupFilesAfterEnv: ["@testing-library/jest-dom", "jest-canvas-mock"],
   transform: {
     "\\.(svg|jpg|png|webp)$": "<rootDir>/node_modules/jest-transform-stub",
   },
