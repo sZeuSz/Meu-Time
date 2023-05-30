@@ -11,19 +11,17 @@ import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import Lineups from "../team-statistics/lineups/lineups.component";
 import ResultTable from "../team-statistics/result-table/result-table.component";
 import GraphGolsPerMinute from "../team-statistics/graphic-gols-per-minutes/graphic-gols-per-minutes.component";
+import RouteSelectContent from "../route-select-statistic-fragment/route-select-statistic-fragment.component";
 const SelectAction: React.FC = () => {
   const { userData } = useContext(UserContext);
   const { formData } = useContext(FormContext);
-  const [selectContent, setSelectContent] = useState<any>();
+  const [selectContent, setSelectContent] = useState<number>(0);
   const [text, setText] =
     useState(`Olá, ${userData.account.firstname}. Agora que selecionou todas
                   as informações necessárias, escolha o que deseja ver do time
                   escolhido (${formData.step4Data.name})`);
-  const handleSelectContent = (ButtonId: Number) => {
-    setSelectContent(<Players />);
-    setSelectContent(<Lineups />);
-    setSelectContent(<ResultTable />);
-    setSelectContent(<GraphGolsPerMinute />);
+  const handleSelectContent = (ButtonId: number) => {
+    setSelectContent(ButtonId);
     setText(
       statisticsToSelect.filter((item) => item.id === ButtonId)?.[0].name
     );
@@ -70,7 +68,7 @@ const SelectAction: React.FC = () => {
                       </ButtonSelect>
                     );
                   })}
-                {selectContent}
+                {selectContent && <RouteSelectContent id={selectContent} />}
               </>
             </Modal>
           </ModalWrapper>
