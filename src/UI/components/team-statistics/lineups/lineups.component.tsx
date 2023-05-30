@@ -61,6 +61,10 @@ const Lineups: React.FC = React.memo(() => {
     <>
       {loading ? (
         <LoadingSpinner />
+      ) : lineups.length === 0 ? (
+        <h3 style={{ fontSize: "40px", color: "#ffffff" }}>
+          Não há dados, desculpe '_'
+        </h3>
       ) : (
         <Card>
           <div>
