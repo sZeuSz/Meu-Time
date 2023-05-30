@@ -31,6 +31,11 @@ const CircleWrapper = styled.div`
   }
 
   z-index: 1;
+
+  @media (max-width: 280px) {
+    width: 90px;
+    height: 90px;
+  }
 `;
 
 export { CircleWrapper };
