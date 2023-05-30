@@ -40,7 +40,7 @@ const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
     console.log("handlezando", step);
 
     if (step === 3 && Object.keys(formData.step1Data).length === 0) {
-      alert("Você deve escolher um páis primeiro");
+      alert("Você deve escolher um país primeiro");
       return;
     }
     if (step === 4 && Object.keys(formData.step3Data).length === 0) {
