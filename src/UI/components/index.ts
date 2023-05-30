@@ -15,3 +15,4 @@ export { default as ResultTable } from "./team-statistics/result-table/result-ta
 export { default as FixtureTable } from "./fixture-table/fixture-table.component";
 export { default as Graph } from "./graph/graph.component";
 export { default as GraphGolsPerMinute } from "./team-statistics/graphic-gols-per-minutes/graphic-gols-per-minutes.component";
+export { ContainerDFC } from "./shared-styled/containerDFC";

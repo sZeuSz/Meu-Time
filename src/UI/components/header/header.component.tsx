@@ -25,7 +25,7 @@ const Header: React.FC = () => {
           <Navbar>
             <span onClick={() => navigate("/")}>Início</span>
             <span onClick={() => navigate("/")}>Contato</span>
-            <span onClick={() => navigate("/")}>Sobre</span>
+            <span onClick={() => navigate("/about")}>Sobre</span>
           </Navbar>
         )}
         {isMobileScreen && <MenuIcon />}

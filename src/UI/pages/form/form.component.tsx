@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import {
+  ContainerDFC,
   CustomSection,
   Modal,
   ModalWrapper,
@@ -19,7 +20,7 @@ const Form: React.FC = () => {
   return (
     <>
       <CustomSection>
-        <Container>
+        <ContainerDFC>
           <SelectWrapper>
             {step && (
               <ModalWrapper>
@@ -47,17 +48,13 @@ const Form: React.FC = () => {
               </ModalWrapper>
             )}
           </SelectWrapper>
-        </Container>
+        </ContainerDFC>
       </CustomSection>
       <WaveEffect></WaveEffect>
     </>
   );
 };
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+
 const StepWrapper = styled.div`
   position: relative;
 
