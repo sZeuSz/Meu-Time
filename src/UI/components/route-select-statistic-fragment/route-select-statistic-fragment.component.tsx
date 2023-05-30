@@ -10,13 +10,15 @@ import { RouteSelectContentProps } from "./route-select-statistic-fragment.types
 const RouteSelectContent: React.FC<RouteSelectContentProps> = ({ id }) => {
   switch (id) {
     case 1:
-      return <Players />;
+      return <Players data-testid="players-component" />;
     case 2:
-      return <Lineups />;
+      return <Lineups data-testid="lineups-component" />;
     case 3:
-      return <ResultTable />;
+      return <ResultTable data-testid="result-table-component" />;
     case 4:
-      return <GraphGolsPerMinute />;
+      return (
+        <GraphGolsPerMinute data-testid="graph-gols-per-minute-component" />
+      );
     default:
       return <></>;
   }

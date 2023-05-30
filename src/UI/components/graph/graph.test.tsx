@@ -20,7 +20,7 @@ describe("Graph component", () => {
       },
     };
 
-    const { getByText } = setup(stats);
+    setup(stats);
 
     const canvasElement = document.querySelector("canvas");
     expect(canvasElement).toBeInTheDocument();

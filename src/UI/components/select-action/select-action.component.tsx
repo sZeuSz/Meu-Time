@@ -29,6 +29,8 @@ const SelectAction: React.FC = () => {
     );
   };
 
+  console.log(formData);
+
   return (
     <CustomSection>
       <Container>

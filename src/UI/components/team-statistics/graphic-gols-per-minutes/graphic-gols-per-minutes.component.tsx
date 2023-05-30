@@ -65,7 +65,7 @@ const GraphGolsPerMinute: React.FC = React.memo(() => {
           Não há dados, desculpe '_'
         </h3>
       ) : (
-        <Card>
+        <Card data-testid="graph-gols-per-minute-component">
           <InfoWrapper>
             <Graph stats={data.for.minute} />
           </InfoWrapper>

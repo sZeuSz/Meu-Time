@@ -13,6 +13,7 @@ const Step3: React.FC = () => {
       apiFunction={getLeagues}
       flagKey="flag"
       nameKey="name"
+      seasonYear={formData.step2Data.name}
       countryName={formData.step1Data.name}
       apiParams={[]}
     />

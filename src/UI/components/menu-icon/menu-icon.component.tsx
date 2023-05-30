@@ -16,7 +16,11 @@ function MenuIcon(): JSX.Element {
 
   return (
     <>
-      <MenuIconWrapper open={isOpen} onClick={handleClick}>
+      <MenuIconWrapper
+        data-testid="menu-icon"
+        open={isOpen}
+        onClick={handleClick}
+      >
         <div />
         <div />
         <div />

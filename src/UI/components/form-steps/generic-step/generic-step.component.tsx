@@ -35,10 +35,11 @@ function Step<T extends { [key: string]: string }>(
     async (key: string) => {
       try {
         let response: T[];
-        if (props.countryName) {
+        if (props.countryName && props.seasonYear) {
           response = await props.apiFunction(
             key,
             props.countryName,
+            props.seasonYear,
             ...props.apiParams
           );
         } else if (props.leagueId && props.seasonYear) {

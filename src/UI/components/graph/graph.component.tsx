@@ -52,7 +52,13 @@ const Graph: React.FC<{ stats: Stats }> = ({ stats }: { stats: Stats }) => {
     ],
   };
 
-  return <Line options={options} data={chartData} />;
+  return (
+    <Line
+      data-testid="graph-gols-per-minute-component"
+      options={options}
+      data={chartData}
+    />
+  );
 };
 
 export default Graph;
