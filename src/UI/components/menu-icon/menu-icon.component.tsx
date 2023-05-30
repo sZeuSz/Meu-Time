@@ -9,6 +9,7 @@ import {
 function MenuIcon(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+
   const handleClick = () => {
     setIsOpen(!isOpen);
   };

@@ -8,7 +8,6 @@ import {
 import { RouteSelectContentProps } from "./route-select-statistic-fragment.types";
 
 const RouteSelectContent: React.FC<RouteSelectContentProps> = ({ id }) => {
-  console.log("fale", id);
   switch (id) {
     case 1:
       return <Players />;

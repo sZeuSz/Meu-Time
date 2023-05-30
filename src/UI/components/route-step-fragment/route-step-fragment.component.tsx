@@ -13,7 +13,7 @@ const RouteStepContent: React.FC<RouteStepContentProps> = ({ step }) => {
     case 4:
       return <Step4 />;
     default:
-      return <>Não reconheço esse passo, mestre</>;
+      return <></>;
   }
 };
 

@@ -38,17 +38,14 @@ const CustomBox: React.FC = () => {
         const response = await signIn(state.apiKey);
 
         if (response?.errors?.token) {
-          console.log(response?.errors?.token);
           updateState("error", "Não foi possível autenticar usando essa Key");
           updateState("isLoading", false);
           return;
         }
 
-        console.log("logado com sucesso", response.response);
         response.response["api_key"] = state.apiKey;
         setUserData(response.response);
         setUserDataLS(response.response);
-        console.log("salvo com sucesso no contexto", response.response);
         navigate("/form");
       } else {
         updateState("error", "Campo obrigatório!");

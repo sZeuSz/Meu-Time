@@ -55,7 +55,6 @@ const ResultTable: React.FC = React.memo(() => {
     formData.step4Data.id,
     getData,
   ]);
-  console.log(data);
   return (
     <>
       {loading ? (

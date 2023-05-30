@@ -23,7 +23,6 @@ const GraphGolsPerMinute: React.FC = React.memo(() => {
           teamId,
           "goals"
         );
-        console.log(response);
         setData(response);
       } catch (error) {
         console.error(error);

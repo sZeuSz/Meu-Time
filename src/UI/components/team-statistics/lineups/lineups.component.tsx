@@ -57,7 +57,6 @@ const Lineups: React.FC = React.memo(() => {
     formData.step4Data.id,
     getData,
   ]);
-  console.log(lineups);
   return (
     <>
       {loading ? (

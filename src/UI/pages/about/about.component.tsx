@@ -7,6 +7,7 @@ import {
   WaveEffect,
 } from "UI/components";
 import { SelectWrapper } from "./about.styled";
+
 const About: React.FC = () => {
   return (
     <>
