@@ -3,7 +3,7 @@ import { LoadingSpinner, LoadingWrapper } from "./load-spinner.styled";
 
 const LoadSpinner = () => {
   return (
-    <LoadingWrapper>
+    <LoadingWrapper data-testid="loading-spinner">
       <LoadingSpinner />
     </LoadingWrapper>
   );
