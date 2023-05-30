@@ -15,7 +15,7 @@ import RouteSelectContent from "../route-select-statistic-fragment/route-select-
 const SelectAction: React.FC = () => {
   const { userData } = useContext(UserContext);
   const { formData } = useContext(FormContext);
-  const [selectContent, setSelectContent] = useState<number>(0);
+  const [selectContent, setSelectContent] = useState<number | null>(null);
   const [text, setText] =
     useState(`Olá, ${userData.account.firstname}. Agora que selecionou todas
                   as informações necessárias, escolha o que deseja ver do time
