@@ -8,6 +8,7 @@ const getTeamsStatistics = async (
   teamId: string,
   field: string
 ): Promise<any> => {
+  console.log("FOOII", field);
   /*try {
     const response = await api.get(`/teams/statistics?league=${leagueId}&season=${seasonYear}&team=${teamId}`, makeConfig(key));
     return response.data;
@@ -302,7 +303,7 @@ const getTeamsStatistics = async (
       },
     },
   };
-
+  console.log(result.response);
   return result.response[field];
 };
 

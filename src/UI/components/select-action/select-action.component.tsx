@@ -10,6 +10,7 @@ import Players from "../team-statistics/players/players.component";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import Lineups from "../team-statistics/lineups/lineups.component";
 import ResultTable from "../team-statistics/result-table/result-table.component";
+import GraphGolsPerMinute from "../team-statistics/graphic-gols-per-minutes/graphic-gols-per-minutes.component";
 const SelectAction: React.FC = () => {
   const { userData } = useContext(UserContext);
   const { formData } = useContext(FormContext);
@@ -22,6 +23,7 @@ const SelectAction: React.FC = () => {
     setSelectContent(<Players />);
     setSelectContent(<Lineups />);
     setSelectContent(<ResultTable />);
+    setSelectContent(<GraphGolsPerMinute />);
     setText(
       statisticsToSelect.filter((item) => item.id === ButtonId)?.[0].name
     );

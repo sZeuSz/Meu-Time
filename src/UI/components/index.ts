@@ -13,3 +13,5 @@ export { Modal } from "./shared-styled/modal";
 export { default as Lineups } from "./team-statistics/lineups/lineups.component";
 export { default as ResultTable } from "./team-statistics/result-table/result-table.component";
 export { default as FixtureTable } from "./fixture-table/fixture-table.component";
+export { default as Graph } from "./graph/graph.component";
+export { default as GraphGolsPerMinute } from "./team-statistics/graphic-gols-per-minutes/graphic-gols-per-minutes.component";

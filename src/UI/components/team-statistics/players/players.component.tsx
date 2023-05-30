@@ -9,7 +9,7 @@ import { PlayerStatistics } from "./players.types";
 const Players: React.FC = React.memo(() => {
   const { userData } = useContext(UserContext);
   const { formData } = useContext(FormContext);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [players, setPlayers] = useState<PlayerStatistics[]>([]);
 
   const getData = useCallback(
@@ -27,6 +27,7 @@ const Players: React.FC = React.memo(() => {
   );
 
   useEffect(() => {
+    setLoading(true);
     if (
       userData?.api_key &&
       formData.step3Data.id &&

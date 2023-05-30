@@ -10,7 +10,7 @@ import FixtureTable from "UI/components/fixture-table/fixture-table.component";
 const ResultTable: React.FC = React.memo(() => {
   const { userData } = useContext(UserContext);
   const { formData } = useContext(FormContext);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<FixtureStats[]>([]);
 
   const getData = useCallback(
@@ -34,6 +34,7 @@ const ResultTable: React.FC = React.memo(() => {
   );
 
   useEffect(() => {
+    setLoading(true);
     if (
       userData?.api_key &&
       formData.step3Data.id &&
