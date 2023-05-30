@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   ContainerDFC,
   CustomSection,
@@ -10,13 +10,11 @@ import {
 import styled from "styled-components";
 import { UserContext } from "contexts/userContext";
 import { steps } from "data";
-import { FormContext, FormProvider } from "contexts/formContext";
+import { FormContext } from "contexts/formContext";
 
 const Form: React.FC = () => {
-  const { formData, setFormData, nextStep } = useContext(FormContext);
-  const { userData } = useContext(UserContext);
+  const { formData, nextStep } = useContext(FormContext);
   const { step } = formData;
-  console.log("PAASSSOOO", step);
   return (
     <>
       <CustomSection>

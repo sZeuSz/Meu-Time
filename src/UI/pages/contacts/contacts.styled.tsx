@@ -23,6 +23,11 @@ const ContactCard = styled.div`
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 10px;
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 const ContactName = styled.h3`
