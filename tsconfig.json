@@ -12,6 +12,7 @@
     "baseUrl": "./src",
     "allowJs": true,
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx"
   },
   "include": ["src"]
