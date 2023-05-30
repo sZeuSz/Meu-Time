@@ -82,6 +82,10 @@ const Title = styled.h1`
   font-size: 30px;
   color: #fff;
   text-align: center;
+
+  @media (max-width: 763px) {
+    font-size: 20px;
+  }
 `;
 const Container = styled.div`
   display: flex;
