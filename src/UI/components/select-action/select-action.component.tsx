@@ -32,7 +32,7 @@ const SelectAction: React.FC = () => {
   return (
     <CustomSection>
       <Container>
-        <SelectWrapper selectContent={selectContent}>
+        <SelectWrapper selectcontent={selectContent}>
           <ModalWrapper>
             {selectContent && (
               <div

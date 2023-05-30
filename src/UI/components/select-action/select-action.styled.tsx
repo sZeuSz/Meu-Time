@@ -16,7 +16,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const SelectWrapper = styled.div<{ selectContent: any }>`
+const SelectWrapper = styled.div<{ selectcontent: any }>`
   width: 100vw;
   display: flex;
   align-items: center;

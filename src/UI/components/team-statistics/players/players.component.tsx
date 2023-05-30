@@ -53,6 +53,10 @@ const Players: React.FC = React.memo(() => {
     <>
       {loading ? (
         <LoadingSpinner />
+      ) : players.length === 0 ? (
+        <h3 style={{ fontSize: "40px", color: "#ffffff" }}>
+          Não há dados, desculpe '_'
+        </h3>
       ) : (
         players.map((objectPlayer: PlayerStatistics) => {
           const {

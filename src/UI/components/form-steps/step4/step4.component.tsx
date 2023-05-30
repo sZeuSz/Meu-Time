@@ -5,13 +5,16 @@ import Step from "../generic-step/generic-step.component";
 import { Teams } from "./step4.types";
 
 const Step4: React.FC = () => {
-  const { saveStep } = useContext(FormContext);
+  const { formData, saveStep } = useContext(FormContext);
+  console.log(formData);
   return (
     <Step<Teams>
       saveStep={saveStep}
       apiFunction={getTeams}
       flagKey="flag"
       nameKey="name"
+      leagueId={formData.step3Data.id}
+      seasonYear={formData.step2Data.name}
       apiParams={[]}
     />
   );

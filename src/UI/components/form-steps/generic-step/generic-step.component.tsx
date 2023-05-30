@@ -19,6 +19,8 @@ type StepProps<T> = {
 
 type StepWithDataProps<T> = StepProps<T> & {
   countryName?: string;
+  leagueId?: string;
+  seasonYear?: string;
 };
 
 function Step<T extends { [key: string]: string }>(
@@ -39,9 +41,17 @@ function Step<T extends { [key: string]: string }>(
             props.countryName,
             ...props.apiParams
           );
+        } else if (props.leagueId && props.seasonYear) {
+          response = await props.apiFunction(
+            key,
+            props.leagueId,
+            props.seasonYear,
+            ...props.apiParams
+          );
         } else {
           response = await props.apiFunction(key, ...props.apiParams);
         }
+        console.log(response);
         setData(response);
       } catch (error) {
         console.error(error);
