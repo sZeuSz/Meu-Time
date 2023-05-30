@@ -17,14 +17,14 @@ const Header: React.FC = () => {
   return (
     <ContainerHeader>
       <LimitContent>
-        <LogoWrapper>
+        <LogoWrapper onClick={() => navigate("/")}>
           <Logo src={logo} />
           <h1>Meu Time</h1>
         </LogoWrapper>
         {!isMobileScreen && (
           <Navbar>
             <span onClick={() => navigate("/")}>Início</span>
-            <span onClick={() => navigate("/")}>Contato</span>
+            <span onClick={() => navigate("/contacts")}>Contato</span>
             <span onClick={() => navigate("/about")}>Sobre</span>
           </Navbar>
         )}

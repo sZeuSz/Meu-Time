@@ -54,5 +54,9 @@ const LogoWrapper = styled.div`
   font-size: 30px;
   font-weight: bold;
   color: #ffffff;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 export { ContainerHeader, LimitContent, Logo, LogoWrapper, Navbar, MenuIcon };

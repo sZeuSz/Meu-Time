@@ -32,7 +32,7 @@ function MenuIcon(): JSX.Element {
         <MobileNavItem
           onClick={() => {
             handleClick();
-            navigate("/");
+            navigate("/contacts");
           }}
         >
           Contato
@@ -40,7 +40,7 @@ function MenuIcon(): JSX.Element {
         <MobileNavItem
           onClick={() => {
             handleClick();
-            navigate("/");
+            navigate("/about");
           }}
         >
           Sobre
