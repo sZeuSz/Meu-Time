@@ -38,6 +38,15 @@ const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
 
   const nextStep = (step: any) => {
     console.log("handlezando", step);
+
+    if (step === 3 && Object.keys(formData.step1Data).length === 0) {
+      alert("Você deve escolher um páis primeiro");
+      return;
+    }
+    if (step === 4 && Object.keys(formData.step3Data).length === 0) {
+      alert("Você deve escolher uma liga primeiro");
+      return;
+    }
     setFormData({
       ...formData,
       step: steps.findIndex((stepS) => stepS.step === step) + 1,

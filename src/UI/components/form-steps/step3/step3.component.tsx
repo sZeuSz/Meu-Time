@@ -6,6 +6,7 @@ import { League } from "./step3.types";
 
 const Step3: React.FC = () => {
   const { formData, saveStep } = useContext(FormContext);
+
   return (
     <Step<League>
       saveStep={saveStep}

@@ -6,6 +6,7 @@ import { Country } from "./step1.types";
 
 const Step1: React.FC = () => {
   const { saveStep } = useContext(FormContext);
+
   return (
     <Step<Country>
       saveStep={saveStep}
