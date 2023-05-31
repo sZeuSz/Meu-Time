@@ -57,12 +57,12 @@ const Players: React.FC = React.memo(() => {
           Não há dados, desculpe '_'
         </h3>
       ) : (
-        players.map((objectPlayer: PlayerStatistics) => {
+        players.map((objectPlayer: PlayerStatistics, index) => {
           const {
             player: { firstname, age, nationality, photo },
           } = objectPlayer;
           return (
-            <Card data-testid="player-card">
+            <Card data-testid="player-card" key={index}>
               <Figure>
                 <PlayerImg src={photo} alt={`foto de ${firstname}`} />
               </Figure>
