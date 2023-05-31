@@ -10,9 +10,8 @@ Este é um projeto chamado Meu Time, uma aplicação web desenvolvida com ReactJ
 
 - Autenticação com a API-Football usando uma chave de acesso
 - Exibição de estatísticas de jogadores, equipes e competições
-- Pesquisa avançada de jogadores, equipes e competições
+- Pesquisa "avançada" de jogadores, equipes e competições
 - Visualização de detalhes de jogadores, equipes e competições
-- Personalização de favoritos para acompanhar jogadores e equipes
 
 ## Pré-requisitos
 
