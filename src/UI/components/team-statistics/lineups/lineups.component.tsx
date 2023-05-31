@@ -60,18 +60,18 @@ const Lineups: React.FC = React.memo(() => {
   return (
     <>
       {loading ? (
-        <LoadingSpinner />
-      ) : lineups.length === 0 ? (
+        <LoadingSpinner data-testid="loading-spinner" />
+      ) : !lineups?.length ? (
         <h3 style={{ fontSize: "40px", color: "#ffffff" }}>
           Não há dados, desculpe '_'
         </h3>
       ) : (
-        <Card>
+        <Card data-testid="lineups-component">
           <div>
             <SoccerLineUp
               size={isMobileScreen ? "responsive" : "small"}
               pattern={"lines"}
-              homeTeam={generateTeam(lineups?.[0]?.formation)}
+              homeTeam={generateTeam(lineups[0].formation)}
             />
           </div>
           <InfoWrapper>

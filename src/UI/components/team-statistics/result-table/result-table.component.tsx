@@ -55,16 +55,17 @@ const ResultTable: React.FC = React.memo(() => {
     formData.step4Data.id,
     getData,
   ]);
+
   return (
     <>
       {loading ? (
-        <LoadingSpinner />
-      ) : data.length === 0 ? (
+        <LoadingSpinner data-testid="loading-spinner" />
+      ) : !data?.length ? (
         <h3 style={{ fontSize: "40px", color: "#ffffff" }}>
           Não há dados, desculpe '_'
         </h3>
       ) : (
-        <Card>
+        <Card data-testid="fixture-table">
           <InfoWrapper>
             <FixtureTable fixtureStats={data} />
           </InfoWrapper>

@@ -48,12 +48,11 @@ const Players: React.FC = React.memo(() => {
     formData.step4Data.id,
     getData,
   ]);
-
   return (
     <>
       {loading ? (
-        <LoadingSpinner />
-      ) : players.length === 0 ? (
+        <LoadingSpinner data-testid="loading-spinner" />
+      ) : !players?.length ? (
         <h3 style={{ fontSize: "40px", color: "#ffffff" }}>
           Não há dados, desculpe '_'
         </h3>
@@ -63,7 +62,7 @@ const Players: React.FC = React.memo(() => {
             player: { firstname, age, nationality, photo },
           } = objectPlayer;
           return (
-            <Card>
+            <Card data-testid="player-card">
               <Figure>
                 <PlayerImg src={photo} alt={`foto de ${firstname}`} />
               </Figure>

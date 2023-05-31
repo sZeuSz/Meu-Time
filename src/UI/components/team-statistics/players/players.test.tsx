@@ -1,13 +1,14 @@
 import { render, waitFor } from "@testing-library/react";
 import { FormContext } from "contexts/formContext";
 import { UserContext } from "contexts/userContext";
+import React from "react";
 import { act } from "react-dom/test-utils";
 import { BrowserRouter } from "react-router-dom";
-import { getTeamsStatistics } from "services";
-import ResultTable from "./result-table.component";
+import { getPlayers } from "services";
+import Players from "./players.component";
 
 jest.mock("services", () => ({
-  getTeamsStatistics: jest.fn(),
+  getPlayers: jest.fn(),
 }));
 
 const setup = () => {
@@ -91,34 +92,28 @@ const setup = () => {
             saveStep: jest.fn(),
           }}
         >
-          <ResultTable />
+          <Players />
         </FormContext.Provider>
       </UserContext.Provider>
     </BrowserRouter>
   );
 };
-describe("ResultTable Component", () => {
-  it("displays loading spinner when loading is true", async () => {
-    const { getByTestId } = setup();
 
-    await waitFor(
-      () => {
-        const loadingSpinner = getByTestId("loading-spinner");
-        expect(loadingSpinner).toBeInTheDocument();
-      },
-      { timeout: 5000 }
-    );
+describe("Players Component", () => {
+  it("displays loading spinner when loading is true", () => {
+    const { getByTestId } = setup();
+    const loadingSpinner = getByTestId("loading-spinner");
+    expect(loadingSpinner).toBeInTheDocument();
   });
 
   it("displays 'Não há dados, desculpe '_'", async () => {
-    const mockData = [];
-    const mockGetTeamsStatistics = getTeamsStatistics as jest.MockedFunction<
-      typeof getTeamsStatistics
-    >;
-
-    mockGetTeamsStatistics.mockResolvedValue(mockData);
-
     const { getByText } = setup();
+    const mockPlayers = [];
+    const mockGetPlayers = getPlayers as jest.MockedFunction<typeof getPlayers>;
+
+    act(() => {
+      mockGetPlayers.mockResolvedValue(mockPlayers);
+    });
 
     await waitFor(
       () => {
@@ -129,40 +124,34 @@ describe("ResultTable Component", () => {
     );
   });
 
-  it("displays the fixture table when data is not empty", async () => {
-    const mockData = [
+  it("displays the player cards when players data is not empty", async () => {
+    const mockPlayers = [
       {
-        fixture: {
-          id: 1,
-          date: "2023-05-30",
-          status: "finished",
-          homeTeam: {
-            id: 123,
-            name: "Team A",
-          },
-          awayTeam: {
-            id: 456,
-            name: "Team B",
-          },
-          goals: {
-            home: 2,
-            away: 1,
-          },
+        player: {
+          firstname: "John",
+          age: 25,
+          nationality: "USA",
+          photo: "https://example.com/player.jpg",
         },
       },
     ];
-    const mockGetTeamsStatistics = getTeamsStatistics as jest.MockedFunction<
-      typeof getTeamsStatistics
-    >;
+    const mockGetPlayers = getPlayers as jest.MockedFunction<typeof getPlayers>;
 
-    mockGetTeamsStatistics.mockResolvedValue(mockData);
+    act(() => {
+      mockGetPlayers.mockResolvedValue(mockPlayers);
+    });
 
-    const { getByTestId } = setup();
-
+    const { getByTestId, getByAltText } = setup();
     await waitFor(
       () => {
-        const fixtureTable = getByTestId("fixture-table");
-        expect(fixtureTable).toBeInTheDocument();
+        const playerCard = getByTestId("player-card");
+        expect(playerCard).toBeInTheDocument();
+
+        const playerImg = getByAltText("foto de John");
+        expect(playerImg).toBeInTheDocument();
+        expect(playerImg.getAttribute("src")).toBe(
+          "https://example.com/player.jpg"
+        );
       },
       { timeout: 5000 }
     );
