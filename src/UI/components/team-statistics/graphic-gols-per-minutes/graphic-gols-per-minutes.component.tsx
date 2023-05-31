@@ -2,10 +2,10 @@ import { FormContext } from "contexts/formContext";
 import { UserContext } from "contexts/userContext";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { getTeamsStatistics } from "services";
-import { LoadingSpinner } from "UI/components/load-spinner/load-spinner.styled";
 import { Card, InfoWrapper } from "./graphic-gols-per-minutes.styled";
 import { FixtureStats } from "./graphic-gols-per-minutes.types";
 import Graph from "UI/components/graph/graph.component";
+import { LoadingSpinner } from "UI/components/load-spinner/load-spinner.styled";
 
 const GraphGolsPerMinute: React.FC = React.memo(() => {
   const { userData } = useContext(UserContext);
@@ -59,7 +59,7 @@ const GraphGolsPerMinute: React.FC = React.memo(() => {
   return (
     <>
       {loading ? (
-        <LoadingSpinner />
+        <LoadingSpinner data-testid="loading-spinner" />
       ) : !data ? (
         <h3 style={{ fontSize: "40px", color: "#ffffff" }}>
           Não há dados, desculpe '_'

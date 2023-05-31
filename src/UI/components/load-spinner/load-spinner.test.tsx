@@ -1,15 +1,16 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import LoadSpinner from "./load-spinner.component";
 
 const setup = () => {
   return render(<LoadSpinner />);
 };
 
-test("render the loading spinner correctly", () => {
-  setup();
+describe("load spinner component", () => {
+  it("render the loading spinner correctly", () => {
+    const { getByTestId } = setup();
 
-  const loadingSpinner = screen.getByTestId("loading-spinner");
+    const loadingSpinner = getByTestId("loading-spinner");
 
-  expect(loadingSpinner).toBeInTheDocument();
+    expect(loadingSpinner).toBeInTheDocument();
+  });
 });

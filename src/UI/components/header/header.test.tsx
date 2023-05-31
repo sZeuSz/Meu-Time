@@ -1,5 +1,4 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import { BrowserRouter, useNavigate } from "react-router-dom";
 import Header from "./header.component";
 
@@ -16,49 +15,51 @@ const setup = () => {
   );
 };
 
-test("navigates to home page when logo is clicked", () => {
-  const navigateMock = jest.fn();
-  (useNavigate as jest.Mock).mockReturnValue(navigateMock);
-  const { getByAltText } = setup();
+describe("header component", () => {
+  it("navigates to home page when logo is clicked", () => {
+    const navigateMock = jest.fn();
+    (useNavigate as jest.Mock).mockReturnValue(navigateMock);
+    const { getByAltText } = setup();
 
-  const logoElement = getByAltText("Meu Time");
-  fireEvent.click(logoElement);
+    const logoElement = getByAltText("Meu Time");
+    fireEvent.click(logoElement);
 
-  expect(navigateMock).toHaveBeenCalledWith("/");
-});
+    expect(navigateMock).toHaveBeenCalledWith("/");
+  });
 
-test('navigates to contacts page when "Início" link is clicked', () => {
-  const navigateMock = jest.fn();
-  (useNavigate as jest.Mock).mockReturnValue(navigateMock);
+  it('navigates to contacts page when "Início" link is clicked', () => {
+    const navigateMock = jest.fn();
+    (useNavigate as jest.Mock).mockReturnValue(navigateMock);
 
-  const { getByText } = setup();
+    const { getByText } = setup();
 
-  const contactLink = getByText("Início");
-  fireEvent.click(contactLink);
+    const contactLink = getByText("Início");
+    fireEvent.click(contactLink);
 
-  expect(navigateMock).toHaveBeenCalledWith("/");
-});
+    expect(navigateMock).toHaveBeenCalledWith("/");
+  });
 
-test('navigates to contacts page when "Contato" link is clicked', () => {
-  const navigateMock = jest.fn();
-  (useNavigate as jest.Mock).mockReturnValue(navigateMock);
+  it('navigates to contacts page when "Contato" link is clicked', () => {
+    const navigateMock = jest.fn();
+    (useNavigate as jest.Mock).mockReturnValue(navigateMock);
 
-  const { getByText } = setup();
+    const { getByText } = setup();
 
-  const contactLink = getByText("Contato");
-  fireEvent.click(contactLink);
+    const contactLink = getByText("Contato");
+    fireEvent.click(contactLink);
 
-  expect(navigateMock).toHaveBeenCalledWith("/contacts");
-});
+    expect(navigateMock).toHaveBeenCalledWith("/contacts");
+  });
 
-test('navigates to contacts page when "Sobre" link is clicked', () => {
-  const navigateMock = jest.fn();
-  (useNavigate as jest.Mock).mockReturnValue(navigateMock);
+  it('navigates to contacts page when "Sobre" link is clicked', () => {
+    const navigateMock = jest.fn();
+    (useNavigate as jest.Mock).mockReturnValue(navigateMock);
 
-  const { getByText } = setup();
+    const { getByText } = setup();
 
-  const contactLink = getByText("Sobre");
-  fireEvent.click(contactLink);
+    const contactLink = getByText("Sobre");
+    fireEvent.click(contactLink);
 
-  expect(navigateMock).toHaveBeenCalledWith("/about");
+    expect(navigateMock).toHaveBeenCalledWith("/about");
+  });
 });

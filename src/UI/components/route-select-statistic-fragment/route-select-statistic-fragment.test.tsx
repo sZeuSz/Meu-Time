@@ -91,73 +91,76 @@ const setup = (id: any) => {
     </BrowserRouter>
   );
 };
+describe("Route select statistic fragment", () => {
+  it("renders Players component when id is 1", () => {
+    const id = 1;
+    setup(id);
 
-test("renders Players component when id is 1", () => {
-  const id = 1;
-  setup(id);
+    waitFor(
+      () => {
+        const playersComponent = screen.getByTestId("players-component");
+        expect(playersComponent).toBeInTheDocument();
+      },
+      { timeout: 5000 }
+    );
+  });
 
-  waitFor(
-    () => {
-      const playersComponent = screen.getByTestId("players-component");
-      expect(playersComponent).toBeInTheDocument();
-    },
-    { timeout: 5000 }
-  );
-});
+  it("renders Lineups component when id is 2", () => {
+    const id = 2;
+    setup(id);
 
-test("renders Lineups component when id is 2", () => {
-  const id = 2;
-  setup(id);
+    waitFor(
+      () => {
+        const lineupsComponent = screen.getByTestId("lineups-component");
+        expect(lineupsComponent).toBeInTheDocument();
+      },
+      { timeout: 5000 }
+    );
+  });
 
-  waitFor(
-    () => {
-      const lineupsComponent = screen.getByTestId("lineups-component");
-      expect(lineupsComponent).toBeInTheDocument();
-    },
-    { timeout: 5000 }
-  );
-});
+  it("renders ResultTable component when id is 3", () => {
+    const id = 3;
+    setup(id);
 
-test("renders ResultTable component when id is 3", () => {
-  const id = 3;
-  setup(id);
+    waitFor(
+      () => {
+        const resultTableComponent = screen.getByTestId(
+          "result-table-component"
+        );
+        expect(resultTableComponent).toBeInTheDocument();
+      },
+      { timeout: 5000 }
+    );
+  });
 
-  waitFor(
-    () => {
-      const resultTableComponent = screen.getByTestId("result-table-component");
-      expect(resultTableComponent).toBeInTheDocument();
-    },
-    { timeout: 5000 }
-  );
-});
+  it("renders GraphGolsPerMinute component when id is 4", () => {
+    const id = 4;
+    setup(id);
 
-test("renders GraphGolsPerMinute component when id is 4", () => {
-  const id = 4;
-  setup(id);
+    waitFor(
+      () => {
+        const graphComponent = screen.getByTestId(
+          "graph-gols-per-minute-component"
+        );
+        expect(graphComponent).toBeInTheDocument();
+      },
+      { timeout: 5000 }
+    );
+  });
 
-  waitFor(
-    () => {
-      const graphComponent = screen.getByTestId(
-        "graph-gols-per-minute-component"
-      );
-      expect(graphComponent).toBeInTheDocument();
-    },
-    { timeout: 5000 }
-  );
-});
+  it("does not render any component when id is not recognized", () => {
+    const id = 5;
+    setup(id);
 
-test("does not render any component when id is not recognized", () => {
-  const id = 5;
-  setup(id);
+    const components = [
+      screen.queryByTestId("players-component"),
+      screen.queryByTestId("lineups-component"),
+      screen.queryByTestId("result-table-component"),
+      screen.queryByTestId("graph-gols-per-minute-component"),
+    ];
 
-  const components = [
-    screen.queryByTestId("players-component"),
-    screen.queryByTestId("lineups-component"),
-    screen.queryByTestId("result-table-component"),
-    screen.queryByTestId("graph-gols-per-minute-component"),
-  ];
-
-  components.forEach((component) => {
-    expect(component).not.toBeInTheDocument();
+    components.forEach((component) => {
+      expect(component).not.toBeInTheDocument();
+    });
   });
 });

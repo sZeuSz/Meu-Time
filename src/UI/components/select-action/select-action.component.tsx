@@ -48,6 +48,7 @@ const SelectAction: React.FC = () => {
               >
                 <Title>{text}</Title>
                 <ArrowIcon
+                  data-testid="arrow-icon"
                   onClick={() => {
                     setText(`Olá, ${userData.account.firstname}. Agora que selecionou todas
                   as informações necessárias, escolha o que deseja ver do time
