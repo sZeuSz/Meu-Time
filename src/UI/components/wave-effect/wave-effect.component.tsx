@@ -7,6 +7,7 @@ const WaveEffect: React.FC = () => {
     <WaveWrapper>
       {waves.map((wave, index) => (
         <Wave
+          className="wave"
           key={index}
           opacity={wave.opacity}
           animationduration={wave.animationduration}
