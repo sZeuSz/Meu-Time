@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://media2.giphy.com/media/1gVUhlXhETaRRxzeHO/giphy.gif" alt="Aplicação em Ação">
+  <img src="ascas.gif" alt="Aplicação em Ação">
 </p>
 
 <h1 align="center" style="font-size: 48px;">Meu Time</h1>
