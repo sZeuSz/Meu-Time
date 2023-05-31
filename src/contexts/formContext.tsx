@@ -37,8 +37,6 @@ const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
   });
 
   const nextStep = (step: any) => {
-    console.log("handlezando", step);
-
     if (step === 3 && Object.keys(formData.step1Data).length === 0) {
       alert("Você deve escolher um país primeiro");
       return;
@@ -62,8 +60,6 @@ const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
   };
 
   const saveStep = (step: any, data: any) => {
-    console.log("salvando dados do step e indo para o próximo step");
-
     setFormData({
       ...formData,
       [`step${step}Data`]: data,

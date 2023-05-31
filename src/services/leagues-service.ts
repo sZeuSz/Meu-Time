@@ -7,15 +7,10 @@ const getLeagues = async (
   seasonYear: number
 ): Promise<any> => {
   try {
-    console.log(key, seasonYear, countryName);
-    console.log(
-      `/leagues?season=${seasonYear.toString()}&country=${countryName}`
-    );
     const result = await api.get(
       `/leagues?season=${Number(seasonYear)}&country=${countryName}`,
       makeConfig(key)
     );
-    console.log("service", result);
     const resultMap = result.data.response.map((item) => {
       return { ...item.league, name: item.league.name, flag: item.league.logo };
     });

@@ -12,7 +12,6 @@ const getPlayers = async (
       `/players?league=${leagueId}&season=${seasonId}&team=${teamId}`,
       makeConfig(key)
     );
-    console.log(response);
     return response.data.response;
   } catch (error) {
     throw new Error("Erro ao obter a lista de players");

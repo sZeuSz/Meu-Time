@@ -6,7 +6,6 @@ import { Teams } from "./step4.types";
 
 const Step4: React.FC = () => {
   const { formData, saveStep } = useContext(FormContext);
-  console.log(formData);
   return (
     <Step<Teams>
       saveStep={saveStep}

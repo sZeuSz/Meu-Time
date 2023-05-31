@@ -52,7 +52,6 @@ function Step<T extends { [key: string]: string }>(
         } else {
           response = await props.apiFunction(key, ...props.apiParams);
         }
-        console.log(response);
         setData(response);
       } catch (error) {
         console.error(error);
@@ -84,7 +83,11 @@ function Step<T extends { [key: string]: string }>(
       ) : (
         data?.map((item, index) => {
           return (
-            <CircleWrapper key={index} onClick={() => handleSelect(item)}>
+            <CircleWrapper
+              data-testid="step-component"
+              key={index}
+              onClick={() => handleSelect(item)}
+            >
               <img
                 src={item[props.flagKey] || defaultImage}
                 alt={item[props.nameKey]}
