@@ -32,37 +32,41 @@ const setup = () =>
   );
 
 describe("home page component", () => {
-  it("should render the component correctly", async () => {
+  it("should render the component correctly", () => {
     const { getByText, getByPlaceholderText } = setup();
-    const placeholderText = "Insira sua key da API-Football";
-    const nameInput = getByPlaceholderText(placeholderText);
-    const nameButton = "Login";
-    const errorRequired = "Campo obrigatório!";
-    const errorKey = "Não foi possível autenticar usando essa Key";
-    const slogan =
-      "JÁ PENSOU EM TER TODAS AS ESTATÍSTICAS DO FUTEBOL NA PALMA DA MÃO?";
-    const loginButton = getByText(nameButton);
-
-    expect(getByText(slogan)).toBeInTheDocument();
-    expect(nameInput).toBeInTheDocument();
-    expect(getByText(nameButton)).toBeInTheDocument();
-    act(() => {
-      fireEvent.click(loginButton);
-    });
-
-    expect(getByText(errorRequired)).toBeInTheDocument();
-
-    act(() => {
-      fireEvent.change(nameInput, { target: { value: "aksucnaksjcnkk" } });
-    });
-
-    act(() => {
-      fireEvent.click(loginButton);
-    });
-
-    await waitFor(
+    waitFor(
       () => {
-        expect(getByText(errorKey)).toBeInTheDocument();
+        const placeholderText = "Insira sua key da API-Football";
+        const nameInput = getByPlaceholderText(placeholderText);
+        const nameButton = "Login";
+        const errorRequired = "Campo obrigatório!";
+        const errorKey = "Não foi possível autenticar usando essa Key";
+        const slogan =
+          "JÁ PENSOU EM TER TODAS AS ESTATÍSTICAS DO FUTEBOL NA PALMA DA MÃO?";
+        const loginButton = getByText(nameButton);
+
+        expect(getByText(slogan)).toBeInTheDocument();
+        expect(nameInput).toBeInTheDocument();
+        expect(getByText(nameButton)).toBeInTheDocument();
+        act(() => {
+          fireEvent.click(loginButton);
+        });
+
+        expect(getByText(errorRequired)).toBeInTheDocument();
+        act(() => {
+          fireEvent.change(nameInput, { target: { value: "aksucnaksjcnkk" } });
+        });
+
+        act(() => {
+          fireEvent.click(loginButton);
+        });
+
+        waitFor(
+          () => {
+            expect(getByText(errorKey)).toBeInTheDocument();
+          },
+          { timeout: 5000 }
+        );
       },
       { timeout: 5000 }
     );

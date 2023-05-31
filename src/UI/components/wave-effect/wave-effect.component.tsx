@@ -4,9 +4,10 @@ import { Wave, WaveWrapper } from "./wave-effect.styled";
 
 const WaveEffect: React.FC = () => {
   return (
-    <WaveWrapper>
+    <WaveWrapper data-testid="wave-effect">
       {waves.map((wave, index) => (
         <Wave
+          className="wave"
           key={index}
           opacity={wave.opacity}
           animationduration={wave.animationduration}

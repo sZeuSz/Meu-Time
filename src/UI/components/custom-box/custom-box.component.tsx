@@ -58,7 +58,7 @@ const CustomBox: React.FC = () => {
   };
   return (
     <>
-      <Box>
+      <Box data-testid="custom-box">
         <LoginForm>
           <Heading>
             JÁ PENSOU EM TER TODAS AS ESTATÍSTICAS DO FUTEBOL NA PALMA DA MÃO?

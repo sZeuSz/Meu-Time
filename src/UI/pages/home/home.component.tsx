@@ -7,7 +7,7 @@ const Home: React.FC = () => {
       <CustomSection>
         <CustomBox />
       </CustomSection>
-      <WaveEffect></WaveEffect>
+      <WaveEffect />
     </>
   );
 };
