@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { createContext } from "react";
 import { steps } from "data";
-import { Country } from "UI/components/form-steps/step1/step1.types";
-import { useNavigate } from "react-router-dom";
 
 type FormData = {
   step1Data: any;
