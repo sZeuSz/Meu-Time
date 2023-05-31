@@ -1,46 +1,88 @@
-# Getting Started with Create React App
+<p align="center">
+  <img src="https://media2.giphy.com/media/1gVUhlXhETaRRxzeHO/giphy.gif" alt="Aplicação em Ação">
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center" style="font-size: 48px;">Meu Time</h1>
 
-## Available Scripts
+Este é um projeto chamado Meu Time, uma aplicação web desenvolvida com ReactJS que permite aos usuários acessar estatísticas de futebol por meio da API-Football.
 
-In the project directory, you can run:
+## Funcionalidades
 
-### `npm start`
+- Autenticação com a API-Football usando uma chave de acesso
+- Exibição de estatísticas de jogadores, equipes e competições
+- Pesquisa avançada de jogadores, equipes e competições
+- Visualização de detalhes de jogadores, equipes e competições
+- Personalização de favoritos para acompanhar jogadores e equipes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Pré-requisitos
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em seu ambiente de desenvolvimento:
 
-### `npm test`
+- [Node.js](https://nodejs.org) (versão 16 ou superior)
+- [Git](https://git-scm.com)
+- [Docker](https://docs.docker.com/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Configuração do Projeto
 
-### `npm run build`
+Siga estas etapas para configurar e executar o projeto:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone o repositório:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```
+   git clone https://github.com/sZeuSz/Meu-Time.git
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Navegue até o diretório do projeto:
 
-### `npm run eject`
+   ```
+   cd Meu-Time
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Instale as dependências:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. Crie um arquivo `.env` na raiz do projeto e defina a variável de ambiente `REACT_APP_API` com a url da API-Football (`https://v3.football.api-sports.io`). Exemplo:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+   ```
+   REACT_APP_API=https...
+   ```
 
-## Learn More
+## Executando o Projeto
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Após a configuração do projeto, você pode executá-lo localmente. Execute o seguinte comando no terminal:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm start
+```
+
+O projeto será executado em modo de desenvolvimento e estará acessível em [http://localhost:3000](http://localhost:3000) no seu navegador.
+
+## Executando o Projeto usando Docker
+
+Após a configuração do projeto, você pode executá-lo localmente usando um proxy reverse. Execute o seguinte comando no terminal `COMO SUPER USUÁRIO`:
+
+```
+sudo docker-compose up
+```
+
+O projeto será executado e estará acessível em [http://localhost:80](http://localhost:80) no seu navegador.
+
+## Contribuição
+
+Contribuições são bem-vindas! Se você encontrar algum problema ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+
+## Licença
+
+Este projeto está licenciado nos termos da licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
+
+## Recursos Adicionais
+
+- [Documentação da API-Football](https://www.api-football.com/documentation-v3)
+- [Documentação do React](https://legacy.reactjs.org/docs/getting-started.html)
+- [Documentação do Typescript](https://www.typescriptlang.org/docs/)
+- [Documentação do Create React App](https://create-react-app.dev/docs/getting-started)
+
+---
